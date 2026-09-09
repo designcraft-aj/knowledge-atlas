@@ -1,0 +1,69 @@
+[
+  {
+    "id": "gautama-buddha",
+    "name": "Gautama Buddha",
+    "type": "philosopher",
+    "born": -563,
+    "died": -483,
+    "country": "India",
+    "wikipedia": "Gautama_Buddha",
+    "movement": "Buddhism",
+    "quote": ""
+  },
+  {
+    "id": "lao-tzu",
+    "name": "Lao Tzu",
+    "type": "philosopher",
+    "born": -601,
+    "died": -531,
+    "country": "China",
+    "wikipedia": "Laozi",
+    "movement": "Taoism",
+    "image": "/people-photos/lao-tzu.jpg",
+    "quote": ""
+  },
+  {
+    "id": "socrates",
+    "name": "Socrates",
+    "type": "philosopher",
+    "born": -470,
+    "died": -399,
+    "country": "Greece",
+    "wikipedia": "Socrates",
+    "movement": "Classical Greek Philosophy",
+    "quote": ""
+  },
+  {
+    "id": "plato",
+    "name": "Plato",
+    "type": "philosopher",
+    "born": -428,
+    "died": -348,
+    "country": "Greece",
+    "wikipedia": "Plato",
+    "movement": "Platonism",
+    "quote": ""
+  },
+  {
+    "id": "epictetus",
+    "name": "Epictetus",
+    "type": "philosopher",
+    "born": 50,
+    "died": 135,
+    "country": "Greece",
+    "wikipedia": "Epictetus",
+    "movement": "Stoicism",
+    "quote": ""
+  },
+  {
+    "id": "marcus-aurelius",
+    "name": "Marcus Aurelius",
+    "type": "philosopher",
+    "born": 121,
+    "died": 180,
+    "country": "Italy",
+    "wikipedia": "Marcus_Aurelius",
+    "movement": "Stoicism",
+    "quote": ""
+  }
+]

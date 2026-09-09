@@ -1,0 +1,86 @@
+[
+  {
+    "id": "jane-austen",
+    "name": "Jane Austen",
+    "type": "author",
+    "born": 1775,
+    "died": 1817,
+    "country": "United Kingdom",
+    "wikipedia": "Jane_Austen",
+    "movement": "Romanticism",
+    "books_read": [],
+    "quote": ""
+  },
+  {
+    "id": "charlotte-bronte",
+    "name": "Charlotte Brontë",
+    "type": "author",
+    "born": 1816,
+    "died": 1855,
+    "country": "United Kingdom",
+    "wikipedia": "Charlotte_Brontë",
+    "movement": "Romanticism",
+    "books_read": [],
+    "quote": ""
+  },
+  {
+    "id": "emily-bronte",
+    "name": "Emily Brontë",
+    "type": "author",
+    "born": 1818,
+    "died": 1848,
+    "country": "United Kingdom",
+    "wikipedia": "Emily_Brontë",
+    "movement": "Romanticism",
+    "books_read": [],
+    "quote": ""
+  },
+  {
+    "id": "anne-bronte",
+    "name": "Anne Brontë",
+    "type": "author",
+    "born": 1820,
+    "died": 1849,
+    "country": "United Kingdom",
+    "wikipedia": "Anne_Brontë",
+    "movement": "Romanticism",
+    "books_read": [],
+    "quote": ""
+  },
+  {
+    "id": "fyodor-dostoevsky",
+    "name": "Fyodor Dostoevsky",
+    "type": "author",
+    "born": 1821,
+    "died": 1881,
+    "country": "Russia",
+    "wikipedia": "Fyodor_Dostoevsky",
+    "movement": "Realism",
+    "books_read": [],
+    "quote": ""
+  },
+  {
+    "id": "leo-tolstoy",
+    "name": "Leo Tolstoy",
+    "type": "author",
+    "born": 1828,
+    "died": 1910,
+    "country": "Russia",
+    "wikipedia": "Leo_Tolstoy",
+    "movement": "Realism",
+    "books_read": [],
+    "quote": ""
+  },
+  {
+    "id": "virginia-woolf",
+    "name": "Virginia Woolf",
+    "type": "author",
+    "born": 1882,
+    "died": 1941,
+    "country": "United Kingdom",
+    "wikipedia": "Virginia_Woolf",
+    "movement": "Modernism",
+    "books_read": [],
+    "quote": ""
+  }
+]

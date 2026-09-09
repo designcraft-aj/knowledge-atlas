@@ -222,7 +222,9 @@ body {
 #detail-card {
   position: fixed;
   z-index: 5;
-  width: 260px;
+  width: max-content; /* elongate to fit the widest line (the quote) */
+  min-width: 240px;
+  max-width: min(92vw, 680px);
   background: #14130e;
   border: 1px solid #2c2920;
   border-radius: 12px;
@@ -310,6 +312,19 @@ body {
 
 .card-quote .card-value {
   font-style: italic;
+  white-space: nowrap; /* keep the quote on a single line */
+}
+
+/* Fetched artwork under the favourite-painting label */
+.card-painting {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 320px;
+  max-height: 260px;
+  object-fit: contain; /* show the whole painting, uncropped */
+  border-radius: 6px;
+  background: #0d0c0a;
 }
 
 .card-empty {

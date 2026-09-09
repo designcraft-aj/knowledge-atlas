@@ -24,7 +24,10 @@ npm run dev
 ```
 
 ## Adding a new person
-Open `public/data/people.json` and add an entry. The shared fields are:
+People live in one file per type under `public/data/` — `artists.json`,
+`authors.json`, `philosophers.json` — all merged onto the same map at load.
+Open the file for the type you're adding and append an entry. The shared
+fields are:
 
 ```json
 {

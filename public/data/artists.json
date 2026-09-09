@@ -8,7 +8,18 @@
     "country": "Netherlands",
     "wikipedia": "Vincent_van_Gogh",
     "movement": "Post-Impressionism",
-    "favourite_painting": "The Starry Night"
+    "favourite_painting": "Starry Night Over the Rhône"
+  },
+  {
+    "id": "henri-matisse",
+    "name": "Henri Matisse",
+    "type": "artist",
+    "born": 1869,
+    "died": 1954,
+    "country": "France",
+    "wikipedia": "Henri_Matisse",
+    "movement": "Fauvism",
+    "favourite_painting": "Woman before an Aquarium"
   },
   {
     "id": "paul-cezanne",
@@ -19,7 +30,7 @@
     "country": "France",
     "wikipedia": "Paul_Cézanne",
     "movement": "Post-Impressionism",
-    "favourite_painting": "The Card Players"
+    "favourite_painting": "The Basket of Apples"
   },
   {
     "id": "berthe-morisot",
@@ -30,7 +41,7 @@
     "country": "France",
     "wikipedia": "Berthe_Morisot",
     "movement": "Impressionism",
-    "favourite_painting": "The Cradle"
+    "favourite_painting": "Woman at Her Toilette"
   },
   {
     "id": "leonardo-da-vinci",
@@ -41,7 +52,7 @@
     "country": "Italy",
     "wikipedia": "Leonardo_da_Vinci",
     "movement": "Renaissance",
-    "favourite_painting": "Mona Lisa"
+    "favourite_painting": "Vitruvian Man"
   },
   {
     "id": "raphael",
@@ -110,6 +121,17 @@
     "favourite_painting": "Three Girls"
   },
   {
+    "id": "raja-ravi-varma",
+    "name": "Raja Ravi Varma",
+    "type": "artist",
+    "born": 1848,
+    "died": 1906,
+    "country": "India",
+    "wikipedia": "Raja_Ravi_Varma",
+    "movement": "Academic art",
+    "favourite_painting": "Mohini"
+  },
+  {
     "id": "michelangelo",
     "name": "Michelangelo",
     "type": "artist",
@@ -162,7 +184,7 @@
     "country": "Norway",
     "wikipedia": "Edvard_Munch",
     "movement": "Post-Impressionism",
-    "favourite_painting": "The Scream"
+    "favourite_painting": "The Scream (lithograph)"
   },
   {
     "id": "caspar-david-friedrich",
@@ -185,155 +207,5 @@
     "wikipedia": "Rembrandt",
     "movement": "Dutch Golden Age",
     "favourite_painting": "The Night Watch"
-  },
-  {
-    "id": "jane-austen",
-    "name": "Jane Austen",
-    "type": "author",
-    "born": 1775,
-    "died": 1817,
-    "country": "United Kingdom",
-    "wikipedia": "Jane_Austen",
-    "movement": "Romanticism",
-    "books_read": [],
-    "quote": ""
-  },
-  {
-    "id": "charlotte-bronte",
-    "name": "Charlotte Brontë",
-    "type": "author",
-    "born": 1816,
-    "died": 1855,
-    "country": "United Kingdom",
-    "wikipedia": "Charlotte_Brontë",
-    "movement": "Romanticism",
-    "books_read": [],
-    "quote": ""
-  },
-  {
-    "id": "emily-bronte",
-    "name": "Emily Brontë",
-    "type": "author",
-    "born": 1818,
-    "died": 1848,
-    "country": "United Kingdom",
-    "wikipedia": "Emily_Brontë",
-    "movement": "Romanticism",
-    "books_read": [],
-    "quote": ""
-  },
-  {
-    "id": "anne-bronte",
-    "name": "Anne Brontë",
-    "type": "author",
-    "born": 1820,
-    "died": 1849,
-    "country": "United Kingdom",
-    "wikipedia": "Anne_Brontë",
-    "movement": "Romanticism",
-    "books_read": [],
-    "quote": ""
-  },
-  {
-    "id": "fyodor-dostoevsky",
-    "name": "Fyodor Dostoevsky",
-    "type": "author",
-    "born": 1821,
-    "died": 1881,
-    "country": "Russia",
-    "wikipedia": "Fyodor_Dostoevsky",
-    "movement": "Realism",
-    "books_read": [],
-    "quote": ""
-  },
-  {
-    "id": "leo-tolstoy",
-    "name": "Leo Tolstoy",
-    "type": "author",
-    "born": 1828,
-    "died": 1910,
-    "country": "Russia",
-    "wikipedia": "Leo_Tolstoy",
-    "movement": "Realism",
-    "books_read": [],
-    "quote": ""
-  },
-  {
-    "id": "virginia-woolf",
-    "name": "Virginia Woolf",
-    "type": "author",
-    "born": 1882,
-    "died": 1941,
-    "country": "United Kingdom",
-    "wikipedia": "Virginia_Woolf",
-    "movement": "Modernism",
-    "books_read": [],
-    "quote": ""
-  },
-  {
-    "id": "gautama-buddha",
-    "name": "Gautama Buddha",
-    "type": "philosopher",
-    "born": -563,
-    "died": -483,
-    "country": "India",
-    "wikipedia": "Gautama_Buddha",
-    "movement": "Buddhism",
-    "quote": ""
-  },
-  {
-    "id": "lao-tzu",
-    "name": "Lao Tzu",
-    "type": "philosopher",
-    "born": -601,
-    "died": -531,
-    "country": "China",
-    "wikipedia": "Laozi",
-    "movement": "Taoism",
-    "quote": ""
-  },
-  {
-    "id": "socrates",
-    "name": "Socrates",
-    "type": "philosopher",
-    "born": -470,
-    "died": -399,
-    "country": "Greece",
-    "wikipedia": "Socrates",
-    "movement": "Classical Greek Philosophy",
-    "quote": ""
-  },
-  {
-    "id": "plato",
-    "name": "Plato",
-    "type": "philosopher",
-    "born": -428,
-    "died": -348,
-    "country": "Greece",
-    "wikipedia": "Plato",
-    "movement": "Platonism",
-    "quote": ""
-  },
-  {
-    "id": "epictetus",
-    "name": "Epictetus",
-    "type": "philosopher",
-    "born": 50,
-    "died": 135,
-    "country": "Greece",
-    "wikipedia": "Epictetus",
-    "movement": "Stoicism",
-    "quote": ""
-  },
-  {
-    "id": "marcus-aurelius",
-    "name": "Marcus Aurelius",
-    "type": "philosopher",
-    "born": 121,
-    "died": 180,
-    "country": "Italy",
-    "wikipedia": "Marcus_Aurelius",
-    "movement": "Stoicism",
-    "quote": ""
   }
 ]
