@@ -392,11 +392,15 @@ body.pan-mode .portraits {
   color: #e5ddd0;
 }
 
-/* Timeline on/off toggle, under the year label */
+/* Timeline on/off toggle, under the year label — always prominent (the label
+   conveys the mode, so it shouldn't dim like the filter buttons) */
 #timeline-toggle {
   margin-top: 16px;
   font-size: 12px;
   padding: 6px 16px;
+  opacity: 1;
+  border-color: #c4a25a;
+  color: #c4a25a;
 }
 
 /* When timeline is off, the slider is inactive — dim it right down */

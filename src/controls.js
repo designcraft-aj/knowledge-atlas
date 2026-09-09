@@ -45,6 +45,7 @@ export function setupControls(people, portraits, movements) {
   let allEras = true;
   timelineToggle.classList.toggle("is-active", allEras);
   controls.classList.toggle("all-eras", allEras);
+  timelineToggle.textContent = allEras ? "View timeline" : "All eras";
   slider.min = minYear;
   slider.max = maxYear;
   slider.value = startYear;
@@ -93,6 +94,7 @@ export function setupControls(people, portraits, movements) {
     allEras = !allEras;
     timelineToggle.classList.toggle("is-active", allEras);
     controls.classList.toggle("all-eras", allEras);
+    timelineToggle.textContent = allEras ? "View timeline" : "All eras";
     update();
   });
 
