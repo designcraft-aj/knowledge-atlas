@@ -1,3 +1,4 @@
+import * as d3 from "d3";
 import { escapeHtml, lifespan } from "./util.js";
 
 // The dim meta line under the name: movement · country · lifespan.
@@ -71,18 +72,20 @@ export function setupDetailCard(portraits) {
   // above the veil so only it (and the card) stay bright. Both live inside the
   // SVG so the on-map portrait can sit above the veil.
   const svg = document.querySelector("#map");
-  const portraitsGroup = document.querySelector("#map .portraits");
+  const zoomLayer = document.querySelector("#map .zoom-layer");
+  const portraitsGroup = zoomLayer.querySelector(".portraits");
   const SVGNS = "http://www.w3.org/2000/svg";
   const overlay = document.createElementNS(SVGNS, "rect");
   overlay.setAttribute("class", "dim-overlay is-hidden");
-  overlay.setAttribute("x", "0");
-  overlay.setAttribute("y", "0");
-  overlay.setAttribute("width", "100%");
-  overlay.setAttribute("height", "100%");
-  svg.appendChild(overlay);
+  // Oversized so it still covers the viewport at any zoom/pan level.
+  overlay.setAttribute("x", "-100000");
+  overlay.setAttribute("y", "-100000");
+  overlay.setAttribute("width", "200000");
+  overlay.setAttribute("height", "200000");
+  zoomLayer.appendChild(overlay);
   const topLayer = document.createElementNS(SVGNS, "g");
   topLayer.setAttribute("class", "portrait-top-layer");
-  svg.appendChild(topLayer);
+  zoomLayer.appendChild(topLayer);
 
   // Move a portrait above the veil (returning any previous one first).
   function raisePortrait(d) {
@@ -99,11 +102,14 @@ export function setupDetailCard(portraits) {
   function positionCard(d) {
     const pad = 16;
     const rect = card.getBoundingClientRect();
-    const fr = d.focusRadius ?? d.r; // the zoomed radius the card sits beside
-    let left = d.x + fr + 16;
-    let top = d.y - fr; // align the card's top with the zoomed portrait's top
+    const t = d3.zoomTransform(svg); // current map zoom/pan
+    const cx = t.applyX(d.x);
+    const cy = t.applyY(d.y);
+    const fr = (d.focusRadius ?? d.r) * t.k; // on-screen radius when focused
+    let left = cx + fr + 16;
+    let top = cy - fr; // align the card's top with the zoomed portrait's top
     if (left + rect.width > window.innerWidth - pad) {
-      left = d.x - fr - 16 - rect.width;
+      left = cx - fr - 16 - rect.width;
     }
     left = Math.max(pad, Math.min(left, window.innerWidth - rect.width - pad));
     top = Math.max(pad, Math.min(top, window.innerHeight - rect.height - pad));

@@ -5,7 +5,7 @@ import { initials } from "./util.js";
 // Place portrait clusters — initials in gold circles — at each country's
 // coordinate, with same-country people clustered tightly. Returns the d3
 // selection of portrait groups so later steps can bind behaviour to them.
-export function placePortraits(people, { svg, projection }) {
+export function placePortraits(people, { zoomLayer, projection }) {
   // Count people per country so radius can respond to crowding: a solo
   // person gets a large circle, while clustered ones shrink to pack tightly.
   const countByCountry = people.reduce((m, p) => {
@@ -37,7 +37,7 @@ export function placePortraits(people, { svg, projection }) {
   for (let i = 0; i < 200; i++) sim.tick();
 
   // Draw one group per person: a gold ring plus the initials.
-  const portrait = svg
+  const portrait = zoomLayer
     .append("g")
     .attr("class", "portraits")
     .selectAll("g")

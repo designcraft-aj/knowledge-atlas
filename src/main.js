@@ -6,6 +6,7 @@ import { setupControls } from "./controls.js";
 import { setupDetailCard } from "./card.js";
 import { loadPortraitImages, loadPaintingImages } from "./images.js";
 import { setupAbout } from "./about.js";
+import { setupZoom } from "./zoom.js";
 
 // Load data, draw the map, then place portraits and wire up interactions.
 async function init() {
@@ -18,6 +19,7 @@ async function init() {
     setupDetailCard(portraits);
     loadPortraitImages(portraits);
     loadPaintingImages(portraits);
+    setupZoom(map.svg, map.zoomLayer);
   }
 }
 

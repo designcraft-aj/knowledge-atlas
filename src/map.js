@@ -18,6 +18,10 @@ export function drawMap() {
     .attr("height", height)
     .attr("viewBox", `0 0 ${width} ${height}`);
 
+  // Everything that zooms and pans together lives in this layer: the map,
+  // the portraits, and the detail-card veil.
+  const zoomLayer = svg.append("g").attr("class", "zoom-layer");
+
   // Convert the compact TopoJSON "countries" object into GeoJSON features.
   const countries = feature(worldTopo, worldTopo.objects.countries);
 
@@ -31,7 +35,7 @@ export function drawMap() {
   const path = d3.geoPath(projection);
 
   // One <path> per country. Fill/stroke colours live in style.css (.country).
-  svg
+  zoomLayer
     .append("g")
     .attr("class", "countries")
     .selectAll("path")
@@ -40,5 +44,5 @@ export function drawMap() {
     .attr("class", "country")
     .attr("d", path);
 
-  return { svg, projection, path };
+  return { svg, projection, path, zoomLayer };
 }
