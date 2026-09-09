@@ -54,18 +54,15 @@ body {
   fill: #0d0c0a;
 }
 
-.portrait-ring {
-  fill: none; /* stroke-only, so the photo/disc shows through */
-  stroke: #c4a25a; /* default: artists — aged gold */
-  --glow: rgba(196, 162, 90, 0.85); /* glow colour, per type below */
-  stroke-width: 1.5;
-  transition: stroke-width 0.15s ease, filter 0.15s ease;
+/* Glow colour per type (default: artists — aged gold) */
+.portrait {
+  --glow: rgba(196, 162, 90, 1);
 }
 
-/* Focused (hovered or pinned) portrait glows in its own ring colour */
-.portrait.is-focused .portrait-ring {
-  stroke-width: 2.5;
-  filter: drop-shadow(0 0 7px var(--glow));
+/* Focused (hovered or pinned) portrait glows in its type colour — a tight
+   inner halo plus a wider soft one for a more prominent glow */
+.portrait.is-focused {
+  filter: drop-shadow(0 0 5px var(--glow)) drop-shadow(0 0 14px var(--glow));
 }
 
 /* Dim veil behind the open card — the active portrait is lifted above it */
@@ -80,15 +77,13 @@ body {
   opacity: 0;
 }
 
-/* Ring colour by type */
-.type-author .portrait-ring {
-  stroke: #c7ccd1; /* authors — silver */
-  --glow: rgba(199, 204, 209, 0.85);
+/* Glow colour by type */
+.portrait.type-author {
+  --glow: rgba(199, 204, 209, 1);
 }
 
-.type-philosopher .portrait-ring {
-  stroke: #6f9fd8; /* philosophers — blue */
-  --glow: rgba(111, 159, 216, 0.9);
+.portrait.type-philosopher {
+  --glow: rgba(111, 159, 216, 1);
 }
 
 .portrait-initials {
@@ -100,7 +95,7 @@ body {
 
 /* Portraits fade in/out as the year slider moves (Step 4) */
 .portrait {
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease, filter 0.15s ease;
 }
 
 .portrait.is-hidden {

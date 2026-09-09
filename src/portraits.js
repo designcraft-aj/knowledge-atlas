@@ -72,12 +72,6 @@ export function placePortraits(people, { svg, projection }) {
     .attr("preserveAspectRatio", "xMidYMid slice")
     .style("display", "none");
 
-  // Gold ring (stroke only) frames whatever sits inside.
-  portrait
-    .append("circle")
-    .attr("class", "portrait-ring")
-    .attr("r", (d) => d.r);
-
   // Initials — the fallback shown until/unless a photo loads.
   portrait
     .append("text")
