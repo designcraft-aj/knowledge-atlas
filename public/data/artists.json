@@ -64,7 +64,8 @@
     "country": "Italy",
     "wikipedia": "Raphael_(painter)",
     "movement": "High Renaissance",
-    "favourite_painting": "The School of Athens"
+    "favourite_painting": "The School of Athens",
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg?width=640"
   },
   {
     "id": "johannes-vermeer",
@@ -210,5 +211,53 @@
     "wikipedia": "Caspar_David_Friedrich",
     "movement": "Romanticism",
     "favourite_painting": "Wanderer above the Sea of Fog"
+  },
+  {
+    "id": "jean-honore-fragonard",
+    "name": "Jean-Honoré Fragonard",
+    "type": "artist",
+    "born": 1732,
+    "died": 1806,
+    "country": "France",
+    "wikipedia": "Jean-Honoré_Fragonard",
+    "movement": "Rococo",
+    "favourite_painting": "The Swing",
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/The_Swing_(P430).jpg?width=640"
+  },
+  {
+    "id": "elisabeth-vigee-le-brun",
+    "name": "Élisabeth Vigée Le Brun",
+    "type": "artist",
+    "born": 1755,
+    "died": 1842,
+    "country": "France",
+    "wikipedia": "Élisabeth_Vigée_Le_Brun",
+    "movement": "Rococo",
+    "favourite_painting": "Self-Portrait in a Straw Hat",
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Self-portrait_in_a_Straw_Hat_by_Elisabeth-Louise_Vig%C3%A9e-Lebrun.jpg?width=640"
+  },
+  {
+    "id": "auguste-toulmouche",
+    "name": "Auguste Toulmouche",
+    "type": "artist",
+    "born": 1829,
+    "died": 1890,
+    "country": "France",
+    "wikipedia": "Auguste_Toulmouche",
+    "movement": "Academic art",
+    "favourite_painting": "The Reluctant Bride",
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Toulmouche_Bride.jpg?width=640"
+  },
+  {
+    "id": "vittorio-reggianini",
+    "name": "Vittorio Reggianini",
+    "type": "artist",
+    "born": 1858,
+    "died": 1938,
+    "country": "Italy",
+    "wikipedia": "Vittorio_Reggianini",
+    "movement": "Academic art",
+    "favourite_painting": "The Recital",
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vittorio_Reggianini_-_The_Recital.jpg?width=640"
   }
 ]
