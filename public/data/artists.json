@@ -259,5 +259,29 @@
     "movement": "Academic art",
     "favourite_painting": "The Recital",
     "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vittorio_Reggianini_-_The_Recital.jpg?width=640"
+  },
+  {
+    "id": "katsushika-hokusai",
+    "name": "Katsushika Hokusai",
+    "type": "artist",
+    "born": 1760,
+    "died": 1849,
+    "country": "Japan",
+    "wikipedia": "Hokusai",
+    "movement": "Ukiyo-e",
+    "favourite_painting": "The Great Wave off Kanagawa",
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tsunami_by_hokusai_19th_century.jpg?width=640"
+  },
+  {
+    "id": "hiroshi-yoshida",
+    "name": "Hiroshi Yoshida",
+    "type": "artist",
+    "born": 1876,
+    "died": 1950,
+    "country": "Japan",
+    "wikipedia": "Hiroshi_Yoshida",
+    "movement": "Shin-hanga",
+    "favourite_painting": "Ghat in Benares",
+    "painting_image": "https://www.artic.edu/iiif/2/f0183c01-56b1-9d60-1db8-f5fa164198d9/full/843,/0/default.jpg"
   }
 ]
