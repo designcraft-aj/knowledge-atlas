@@ -33,8 +33,11 @@ export function setupControls(people, portraits, movements) {
   const controls = document.querySelector("#controls");
   const timelineToggle = document.querySelector("#timeline-toggle");
 
-  // When true, the year filter is ignored and every enabled type is shown.
-  let allEras = false;
+  // Default view: timeline off (All eras) so everyone shows at once. When
+  // true, the year filter is ignored and every enabled type is shown.
+  let allEras = true;
+  timelineToggle.classList.toggle("is-active", allEras);
+  controls.classList.toggle("all-eras", allEras);
   slider.min = minYear;
   slider.max = maxYear;
   slider.value = startYear;
@@ -51,7 +54,7 @@ export function setupControls(people, portraits, movements) {
 
   // Which person types are currently shown. Buttons start active in the HTML.
   const activeTypes = new Set(["artist", "author", "philosopher"]);
-  const filterButtons = document.querySelectorAll(".filter-btn");
+  const filterButtons = document.querySelectorAll("#filters .filter-btn");
 
   // A portrait is visible when its type is enabled and the person was alive
   // in the selected year. Also refreshes the year and era labels.
