@@ -82,5 +82,17 @@
     "movement": "Modernism",
     "books_read": ["A Room of One's Own"],
     "quote": ""
+  },
+  {
+    "id": "george-orwell",
+    "name": "George Orwell",
+    "type": "author",
+    "born": 1903,
+    "died": 1950,
+    "country": "United Kingdom",
+    "wikipedia": "George_Orwell",
+    "movement": "Social realism",
+    "books_read": ["1984"],
+    "quote": ""
   }
 ]
