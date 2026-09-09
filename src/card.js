@@ -7,11 +7,11 @@ function metaLine(d) {
 }
 
 // One labelled field. Shows a faint placeholder when you haven't filled it in.
-function cardField(label, value, isQuote = false) {
+function cardField(label, value, isQuote = false, placeholder = "— add later —") {
   const has = value && String(value).trim();
   const body = has
     ? escapeHtml(value)
-    : `<span class="card-empty">— add later —</span>`;
+    : `<span class="card-empty">${escapeHtml(placeholder)}</span>`;
   return `<div class="card-field${isQuote ? " card-quote" : ""}">
       <span class="card-label">${label}</span>
       <span class="card-value">${body}</span>
@@ -39,23 +39,22 @@ function cardPaintingField(d) {
 // Type-specific body: painting for artists, books + quote for authors,
 // quote + school of thought for philosophers.
 function cardBody(d) {
+  let body = "";
   if (d.type === "artist") {
-    return cardPaintingField(d);
-  }
-  if (d.type === "author") {
+    body = cardPaintingField(d);
+  } else if (d.type === "author") {
     const books = Array.isArray(d.books_read) ? d.books_read.join(", ") : d.books_read;
-    return (
-      cardField("Books I've read", books) +
-      cardField("A quote that stayed with me", d.quote, true)
-    );
-  }
-  if (d.type === "philosopher") {
-    return (
+    body =
+      cardField("Books I've read", books, false, "to be read") +
+      cardField("A quote that stayed with me", d.quote, true);
+  } else if (d.type === "philosopher") {
+    body =
       cardField("A quote that stayed with me", d.quote, true) +
-      cardField("School of thought", d.school || d.movement)
-    );
+      cardField("School of thought", d.school || d.movement);
   }
-  return "";
+  // Personal notes on any person — placeholder until a `notes` field is added.
+  body += cardField("My notes", d.notes, false, "...");
+  return body;
 }
 
 // Wire hover (with a small close delay) + click-to-pin onto the portraits.
