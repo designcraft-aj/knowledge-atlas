@@ -25,12 +25,4 @@ export function setupZoom(svg, zoomLayer) {
   on("#zoom-reset", () =>
     svg.transition().duration(300).call(zoom.transform, d3.zoomIdentity)
   );
-
-  // Pan mode: a grab cursor and drag-to-pan without portraits stealing the
-  // mouse. Toggled via a body class the CSS keys off.
-  const panBtn = document.querySelector("#pan-toggle");
-  panBtn.addEventListener("click", () => {
-    const active = document.body.classList.toggle("pan-mode");
-    panBtn.classList.toggle("is-active", active);
-  });
 }

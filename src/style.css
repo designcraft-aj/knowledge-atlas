@@ -1,5 +1,15 @@
 /* Knowledge Atlas — base styles */
 
+/* Core "darkness" palette — the four warm-brown (dark-roast coffee) tones that
+   set how dark the atlas reads. Change these to re-tone the whole map.
+   Accents (gold, off-white, silver, blue) are intentionally left hardcoded. */
+:root {
+  --bg: #1c130c; /* dark-roast espresso — ocean / void / behind portraits */
+  --land: #2f2218; /* mocha land masses */
+  --border: #443425; /* warm brown hairlines, slider track, card edges */
+  --surface: #221810; /* roasted-brown card + about-panel backgrounds */
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +22,7 @@ body {
 }
 
 body {
-  background: #0d0c0a; /* atlas background */
+  background: var(--bg); /* atlas background */
   color: #e5ddd0; /* warm off-white */
   font-family: Georgia, "Times New Roman", serif;
   overflow: hidden;
@@ -44,14 +54,14 @@ body {
 }
 
 .country {
-  fill: #19170f; /* land masses */
+  fill: var(--land); /* land masses */
   stroke: none; /* borders removed — soft landmass silhouettes */
 }
 
 /* Portrait clusters */
 /* Dark disc behind the initials, covered when a photo loads */
 .portrait-bg {
-  fill: #0d0c0a;
+  fill: var(--bg);
 }
 
 /* Glow colour per type (default: artists — aged gold) */
@@ -78,7 +88,7 @@ body {
 
 /* Dim veil behind the open card — the active portrait is lifted above it */
 .dim-overlay {
-  fill: #0d0c0a;
+  fill: var(--bg);
   opacity: 0.72;
   pointer-events: none; /* still hover/click other portraits through it */
   transition: opacity 0.2s ease;
@@ -218,26 +228,13 @@ body {
   background: rgba(196, 162, 90, 0.14);
 }
 
-/* Pan mode: grab cursor, and drags pass the map without opening cards */
-body.pan-mode #map {
-  cursor: grab;
-}
-
-body.pan-mode #map:active {
-  cursor: grabbing;
-}
-
-body.pan-mode .portraits {
-  pointer-events: none;
-}
-
 .filter-btn {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 14px;
   letter-spacing: 1px;
   color: #e5ddd0;
   background: transparent;
-  border: 1px solid #2c2920;
+  border: 1px solid var(--border);
   border-radius: 999px;
   padding: 8px 18px;
   cursor: pointer;
@@ -269,8 +266,8 @@ body.pan-mode .portraits {
   width: max-content; /* elongate to fit the widest line (the quote) */
   min-width: 240px;
   max-width: min(92vw, 680px);
-  background: #14130e;
-  border: 1px solid #2c2920;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 18px 20px 20px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
@@ -359,16 +356,18 @@ body.pan-mode .portraits {
   white-space: nowrap; /* keep the quote on a single line */
 }
 
-/* Fetched artwork under the favourite-painting label */
+/* Fetched artwork under the favourite-painting label.
+   width/height auto lets the <img> take the painting's own aspect ratio, so
+   there's no fixed box to letterbox — no padding, and nothing is cropped.
+   max-width/height keep it within the card. */
 .card-painting {
   display: block;
-  margin-top: 10px;
-  width: 100%;
+  margin: 10px auto 0; /* auto L/R margins center the image in the card */
+  width: auto;
+  height: auto;
   max-width: 320px;
   max-height: 260px;
-  object-fit: contain; /* show the whole painting, uncropped */
   border-radius: 6px;
-  background: #0d0c0a;
 }
 
 .card-empty {
@@ -470,7 +469,7 @@ body.pan-mode .portraits {
   appearance: none;
   width: 100%;
   height: 1px; /* 1px track */
-  background: #2c2920;
+  background: var(--border);
   outline: none;
   cursor: pointer;
   display: block;
@@ -497,7 +496,7 @@ body.pan-mode .portraits {
 
 #year-slider::-moz-range-track {
   height: 1px;
-  background: #2c2920;
+  background: var(--border);
 }
 
 /* About panel + dimming backdrop */
@@ -518,8 +517,8 @@ body.pan-mode .portraits {
   width: min(520px, 90vw);
   max-height: 80vh;
   overflow-y: auto;
-  background: #14130e;
-  border: 1px solid #2c2920;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 32px 34px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
@@ -595,3 +594,57 @@ body.pan-mode .portraits {
 #credits a:hover {
   text-decoration: underline;
 }
+
+/* Custom cursor (see cursor.js) — a small gold dot. Hide the native cursor
+   everywhere only once ours is active, so nothing flickers before JS runs or
+   when the pointer is off-window. !important beats the pointer rules above. */
+body.custom-cursor.cursor-active,
+body.custom-cursor.cursor-active * {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  pointer-events: none; /* never intercept clicks */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c4a25a; /* aged gold */
+  opacity: 0; /* hidden until the cursor becomes active */
+  transition: opacity 0.25s ease, width 0.18s ease, height 0.18s ease;
+}
+
+/* Reveal the dot once the pointer is in the window */
+body.cursor-active .cursor-dot {
+  opacity: 1;
+}
+
+/* Grow the dot over clickable elements */
+body.cursor-hover .cursor-dot {
+  width: 16px;
+  height: 16px;
+}
+
+/* Magnifier lens (see loupe.js) — follows the cursor when toggled on */
+.loupe {
+  pointer-events: none; /* click/hover pass through to the real portraits */
+}
+
+.loupe.is-hidden {
+  display: none;
+}
+
+.loupe-bg {
+  fill: var(--bg); /* solid disc so ocean gaps aren't see-through */
+}
+
+.loupe-ring {
+  fill: none;
+  stroke: #c4a25a; /* aged gold */
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px rgba(196, 162, 90, 0.45)); /* soft glow */
+}
+

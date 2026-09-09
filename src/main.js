@@ -7,9 +7,12 @@ import { setupDetailCard } from "./card.js";
 import { loadPortraitImages, loadPaintingImages } from "./images.js";
 import { setupAbout } from "./about.js";
 import { setupZoom } from "./zoom.js";
+import { setupCursor } from "./cursor.js";
+import { setupLoupe } from "./loupe.js";
 
 // Load data, draw the map, then place portraits and wire up interactions.
 async function init() {
+  setupCursor();
   setupAbout();
   const data = await loadData();
   const map = drawMap();
@@ -20,6 +23,7 @@ async function init() {
     loadPortraitImages(portraits);
     loadPaintingImages(portraits);
     setupZoom(map.svg, map.zoomLayer);
+    setupLoupe(map.svg);
   }
 }
 

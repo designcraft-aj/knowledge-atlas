@@ -20,7 +20,10 @@ export function drawMap() {
 
   // Everything that zooms and pans together lives in this layer: the map,
   // the portraits, and the detail-card veil.
-  const zoomLayer = svg.append("g").attr("class", "zoom-layer");
+  const zoomLayer = svg
+    .append("g")
+    .attr("class", "zoom-layer")
+    .attr("id", "zoom-layer"); // referenced by the magnifier lens (<use>)
 
   // Convert the compact TopoJSON "countries" object into GeoJSON features.
   const countries = feature(worldTopo, worldTopo.objects.countries);
