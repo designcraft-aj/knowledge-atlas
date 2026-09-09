@@ -26,7 +26,7 @@ function cardPaintingField(d) {
   const img = d.paintingImage
     ? `<img class="card-painting" src="${escapeHtml(d.paintingImage)}" alt="${escapeHtml(
         d.favourite_painting || ""
-      )}" loading="lazy">`
+      )}" referrerpolicy="no-referrer" onerror="this.remove()">`
     : "";
   return `<div class="card-field">
       <span class="card-label">Favourite painting</span>
@@ -67,13 +67,40 @@ export function setupDetailCard(portraits) {
   let pinned = false;
   let current = null;
 
+  // A dim veil over the map, plus a top layer that holds the active portrait
+  // above the veil so only it (and the card) stay bright. Both live inside the
+  // SVG so the on-map portrait can sit above the veil.
+  const svg = document.querySelector("#map");
+  const portraitsGroup = document.querySelector("#map .portraits");
+  const SVGNS = "http://www.w3.org/2000/svg";
+  const overlay = document.createElementNS(SVGNS, "rect");
+  overlay.setAttribute("class", "dim-overlay is-hidden");
+  overlay.setAttribute("x", "0");
+  overlay.setAttribute("y", "0");
+  overlay.setAttribute("width", "100%");
+  overlay.setAttribute("height", "100%");
+  svg.appendChild(overlay);
+  const topLayer = document.createElementNS(SVGNS, "g");
+  topLayer.setAttribute("class", "portrait-top-layer");
+  svg.appendChild(topLayer);
+
+  // Move a portrait above the veil (returning any previous one first).
+  function raisePortrait(d) {
+    clearRaise();
+    const node = portraits.filter((n) => n === d).node();
+    if (node) topLayer.appendChild(node);
+  }
+  function clearRaise() {
+    while (topLayer.firstChild) portraitsGroup.appendChild(topLayer.firstChild);
+  }
+
   // Place the card beside the circle, flipping left near the right edge and
   // clamping vertically so it never spills off-screen.
   function positionCard(d) {
     const pad = 16;
     const rect = card.getBoundingClientRect();
     let left = d.x + d.r + 16;
-    let top = d.y - rect.height / 2;
+    let top = d.y - d.r; // align the card's top with the portrait's top
     if (left + rect.width > window.innerWidth - pad) {
       left = d.x - d.r - 16 - rect.width;
     }
@@ -90,6 +117,8 @@ export function setupDetailCard(portraits) {
     card.querySelector(".card-body").innerHTML = cardBody(d);
     card.classList.toggle("is-pinned", pinned);
     portraits.classed("is-focused", (n) => n === d); // glow the active circle
+    raisePortrait(d); // lift it above the dim veil
+    overlay.classList.remove("is-hidden");
     // A painting image loads without known dimensions — re-place once it's in.
     const img = card.querySelector(".card-painting");
     if (img && !img.complete) {
@@ -111,6 +140,8 @@ export function setupDetailCard(portraits) {
     card.classList.add("is-hidden");
     card.classList.remove("is-pinned");
     portraits.classed("is-focused", false);
+    overlay.classList.add("is-hidden");
+    clearRaise();
   }
 
   function scheduleHide() {

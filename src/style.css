@@ -68,6 +68,18 @@ body {
   filter: drop-shadow(0 0 7px var(--glow));
 }
 
+/* Dim veil behind the open card — the active portrait is lifted above it */
+.dim-overlay {
+  fill: #0d0c0a;
+  opacity: 0.72;
+  pointer-events: none; /* still hover/click other portraits through it */
+  transition: opacity 0.2s ease;
+}
+
+.dim-overlay.is-hidden {
+  opacity: 0;
+}
+
 /* Ring colour by type */
 .type-author .portrait-ring {
   stroke: #c7ccd1; /* authors — silver */
@@ -100,89 +112,57 @@ body {
   opacity: 1;
 }
 
-/* Search box — top-left, quiet until focused */
-#search {
+/* Title + filters, stacked and centered at the top */
+#topbar {
   position: fixed;
-  top: 28px;
-  left: 28px;
-  z-index: 3; /* above filters and map */
-  width: 260px;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
-#search-input {
-  width: 100%;
+#site-title {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 14px;
-  letter-spacing: 0.5px;
+  font-size: 22px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   color: #e5ddd0;
+  opacity: 0.85;
+}
+
+/* Info button — top-left, aligned with the title, opens the About panel */
+#info-btn {
+  position: fixed;
+  top: 18px;
+  left: 28px;
+  z-index: 4;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #2c2920;
   background: rgba(13, 12, 10, 0.6);
-  border: 1px solid #2c2920;
-  border-radius: 999px;
-  padding: 9px 16px;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-#search-input::placeholder {
   color: #e5ddd0;
-  opacity: 0.4;
-}
-
-#search-input:focus {
-  border-color: #c4a25a; /* aged gold */
-}
-
-/* Candidate dropdown — dark panel below the field */
-#search-results {
-  list-style: none;
-  margin: 8px 0 0;
-  padding: 0;
-  background: #14130e;
-  border: 1px solid #2c2920;
-  border-radius: 10px;
-  overflow: hidden;
-  max-height: 320px;
-  overflow-y: auto;
-}
-
-#search-results:empty {
-  display: none; /* hide the panel entirely when there are no results */
-}
-
-.search-result {
-  padding: 9px 16px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 16px;
   cursor: pointer;
-  border-bottom: 1px solid #201e16;
-  transition: background 0.15s ease;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.search-result:last-child {
-  border-bottom: none;
-}
-
-.search-result:hover {
-  background: #201e16;
-}
-
-.search-result .result-name {
-  font-size: 14px;
-  color: #e5ddd0;
-}
-
-.search-result .result-desc {
-  font-size: 12px;
-  color: #e5ddd0;
-  opacity: 0.5;
-  margin-top: 2px;
+#info-btn:hover {
+  opacity: 1;
+  border-color: #c4a25a;
+  color: #c4a25a;
 }
 
 /* Category filter buttons */
 #filters {
-  position: fixed;
-  top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
   display: flex;
   gap: 10px;
 }
@@ -360,7 +340,8 @@ body {
 
 /* When timeline is off, the slider is inactive — dim it right down */
 #controls.all-eras #year-slider,
-#controls.all-eras #ticks {
+#controls.all-eras #ticks,
+#controls.all-eras #year-marks {
   opacity: 0.25;
   pointer-events: none;
 }
@@ -371,6 +352,28 @@ body {
 
 .slider-wrap {
   position: relative;
+  padding-bottom: 22px; /* room for the BC/AD year markers below the track */
+}
+
+/* BC/AD year markers sitting just under the track */
+#year-marks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 12px;
+  height: 0;
+  pointer-events: none;
+}
+
+.year-mark {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  color: #e5ddd0;
+  opacity: 0.4;
 }
 
 /* Century marker dots overlaid on the track */
@@ -378,7 +381,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+  top: 0; /* sit on the 1px track at the top of the wrap */
   height: 0;
   pointer-events: none;
 }
@@ -427,4 +430,93 @@ body {
 #year-slider::-moz-range-track {
   height: 1px;
   background: #2c2920;
+}
+
+/* About panel + dimming backdrop */
+#about-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.55);
+  transition: opacity 0.2s ease;
+}
+
+#about-panel {
+  position: fixed;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(520px, 90vw);
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #14130e;
+  border: 1px solid #2c2920;
+  border-radius: 14px;
+  padding: 32px 34px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  color: #e5ddd0;
+  transition: opacity 0.2s ease;
+}
+
+#about-backdrop.is-hidden,
+#about-panel.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#about-panel h2 {
+  font-weight: normal;
+  font-size: 22px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+#about-panel p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+
+.about-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #e5ddd0;
+  opacity: 0.5;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.about-close:hover {
+  opacity: 1;
+}
+
+/* Credits — small line at the very bottom of the page */
+#credits {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  white-space: nowrap; /* keep it on one line — no orphaned word */
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  color: #e5ddd0;
+  opacity: 0.4;
+}
+
+#credits a {
+  color: #c4a25a; /* aged gold */
+  text-decoration: none;
+}
+
+#credits a:hover {
+  text-decoration: underline;
 }

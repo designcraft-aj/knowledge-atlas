@@ -25,6 +25,9 @@ export function drawMap() {
   const projection = d3
     .geoNaturalEarth1()
     .fitSize([width, height], { type: "Sphere" });
+  // Nudge the whole map — and the portraits placed on it — down a little.
+  const [tx, ty] = projection.translate();
+  projection.translate([tx, ty + 20]);
   const path = d3.geoPath(projection);
 
   // One <path> per country. Fill/stroke colours live in style.css (.country).

@@ -19,7 +19,8 @@
     "country": "France",
     "wikipedia": "Henri_Matisse",
     "movement": "Fauvism",
-    "favourite_painting": "Woman before an Aquarium"
+    "favourite_painting": "Woman before an Aquarium",
+    "painting_image": "https://www.artic.edu/iiif/2/d0e36029-27fc-bf4e-357a-55cfbaf7bdfd/full/843,/0/default.jpg"
   },
   {
     "id": "paul-cezanne",
@@ -130,6 +131,18 @@
     "wikipedia": "Raja_Ravi_Varma",
     "movement": "Academic art",
     "favourite_painting": "Mohini"
+  },
+  {
+    "id": "gaganendranath-tagore",
+    "name": "Gaganendranath Tagore",
+    "type": "artist",
+    "born": 1867,
+    "died": 1938,
+    "country": "India",
+    "wikipedia": "Gaganendranath_Tagore",
+    "movement": "Bengal School",
+    "favourite_painting": "Pratima Visarjan",
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pratima_Visarjan_by_Gaganendranath_Tagore.png?width=640"
   },
   {
     "id": "michelangelo",

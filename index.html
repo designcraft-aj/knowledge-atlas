@@ -6,26 +6,22 @@
     <title>Knowledge Atlas</title>
   </head>
   <body>
-    <div id="search">
-      <input
-        type="text"
-        id="search-input"
-        placeholder="Search an artist, author or philosopher"
-        autocomplete="off"
-      />
-      <ul id="search-results"></ul>
-    </div>
-    <div id="filters">
-      <button class="filter-btn is-active" data-type="artist">Artists</button>
-      <button class="filter-btn is-active" data-type="author">Authors</button>
-      <button class="filter-btn is-active" data-type="philosopher">Philosophers</button>
-    </div>
+    <header id="topbar">
+      <h1 id="site-title">Knowledge Atlas</h1>
+      <div id="filters">
+        <button class="filter-btn is-active" data-type="artist">Artists</button>
+        <button class="filter-btn" data-type="author">Authors</button>
+        <button class="filter-btn" data-type="philosopher">Philosophers</button>
+      </div>
+    </header>
+    <button id="info-btn" aria-label="About this project">i</button>
     <div id="app"></div>
     <div id="controls">
       <div id="era-label"></div>
       <div class="slider-wrap">
         <input type="range" id="year-slider" />
         <div id="ticks"></div>
+        <div id="year-marks"></div>
       </div>
       <div id="year-label"></div>
       <button id="timeline-toggle" class="filter-btn">All eras</button>
@@ -36,6 +32,31 @@
       <div class="card-meta"></div>
       <div class="card-body"></div>
     </div>
+    <div id="about-backdrop" class="is-hidden"></div>
+    <aside id="about-panel" class="is-hidden">
+      <button class="about-close" aria-label="Close">×</button>
+      <h2>About Knowledge Atlas</h2>
+      <p>
+        Knowledge Atlas is a living, personal map of the artists, authors, and
+        philosophers I keep returning to — placed where they lived, and shown
+        across the span of when they were alive.
+      </p>
+      <p>
+        Hover a portrait to see who they are and the work or idea that stayed
+        with me. Drag the timeline to move through history, or switch to
+        “All eras” to see everyone at once.
+      </p>
+      <p><em>[Placeholder text — edit this section in index.html.]</em></p>
+    </aside>
+    <footer id="credits">
+      Portraits &amp; paintings via
+      <a href="https://www.wikipedia.org" target="_blank" rel="noopener">Wikipedia</a>
+      and
+      <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>
+      (CC BY-SA). Base map: Natural Earth via world-atlas. Built with
+      <a href="https://d3js.org" target="_blank" rel="noopener">D3.js</a> and
+      <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a>.
+    </footer>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

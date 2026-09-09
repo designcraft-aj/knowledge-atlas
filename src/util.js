@@ -8,9 +8,9 @@ export function initials(name) {
   return (first + last).toUpperCase();
 }
 
-// Format a year for display: negative values are BCE, positive are CE.
+// Format a year for display: negative values are BC, positive are AD.
 export function formatYear(year) {
-  return year < 0 ? `${-year} BCE` : `${year} CE`;
+  return year < 0 ? `${-year} BC` : `${year} AD`;
 }
 
 // Escape data text before injecting it as HTML.
@@ -21,9 +21,9 @@ export function escapeHtml(s) {
   );
 }
 
-// Compact, BCE-aware life span: "1840–1926", "563–483 BCE", "50–135 CE".
+// Compact, BC/AD-aware life span: "1840–1926", "563–483 BC", "50–135 AD".
 export function lifespan(d) {
-  if (d.born < 0 && d.died < 0) return `${-d.born}–${-d.died} BCE`;
-  if (d.born < 0 && d.died >= 0) return `${-d.born} BCE – ${d.died} CE`;
+  if (d.born < 0 && d.died < 0) return `${-d.born}–${-d.died} BC`;
+  if (d.born < 0 && d.died >= 0) return `${-d.born} BC – ${d.died} AD`;
   return `${d.born}–${d.died}`;
 }

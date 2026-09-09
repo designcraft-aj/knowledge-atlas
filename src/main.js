@@ -5,9 +5,11 @@ import { placePortraits } from "./portraits.js";
 import { setupControls } from "./controls.js";
 import { setupDetailCard } from "./card.js";
 import { loadPortraitImages, loadPaintingImages } from "./images.js";
+import { setupAbout } from "./about.js";
 
 // Load data, draw the map, then place portraits and wire up interactions.
 async function init() {
+  setupAbout();
   const data = await loadData();
   const map = drawMap();
   if (data) {

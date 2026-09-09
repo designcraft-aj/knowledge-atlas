@@ -1,5 +1,12 @@
 import { formatYear } from "./util.js";
 
+// Label a marker year in BC/AD (there is no year zero — treat it as 1 AD).
+function markerLabel(year) {
+  if (year < 0) return `${-year} BC`;
+  if (year === 0) return "1 AD";
+  return `${year} AD`;
+}
+
 // Find the art movement covering a given year. If several overlap, pick the
 // narrowest range as the most specific era. Returns "" in gaps.
 function eraFor(year, movements) {
@@ -52,8 +59,19 @@ export function setupControls(people, portraits, movements) {
     ticks.appendChild(dot);
   }
 
+  // Labeled BC/AD markers every 500 years, so the range reads at a glance.
+  const marks = document.querySelector("#year-marks");
+  const firstMark = Math.ceil(minYear / 500) * 500;
+  for (let y = firstMark; y <= maxYear; y += 500) {
+    const mark = document.createElement("div");
+    mark.className = "year-mark";
+    mark.style.left = `${((y - minYear) / (maxYear - minYear)) * 100}%`;
+    mark.textContent = markerLabel(y);
+    marks.appendChild(mark);
+  }
+
   // Which person types are currently shown. Buttons start active in the HTML.
-  const activeTypes = new Set(["artist", "author", "philosopher"]);
+  const activeTypes = new Set(["artist"]);
   const filterButtons = document.querySelectorAll("#filters .filter-btn");
 
   // A portrait is visible when its type is enabled and the person was alive

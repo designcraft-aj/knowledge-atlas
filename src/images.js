@@ -60,6 +60,16 @@ export async function loadPortraitImages(portrait) {
   } catch {}
 }
 
+// Warm the browser cache so paintings appear instantly when a card opens.
+// no-referrer matches the <img> in the card so hotlink-protected hosts (e.g.
+// the Art Institute of Chicago) serve the same request instead of a 403.
+function preload(url) {
+  if (!url) return;
+  const im = new Image();
+  im.referrerPolicy = "no-referrer";
+  im.src = url;
+}
+
 // Name particles that shouldn't count as identifying tokens when matching a
 // filename to an artist (e.g. "van" in "Rembrandt van Rijn").
 const NAME_PARTICLES = new Set([
@@ -141,12 +151,14 @@ export async function loadPaintingImages(portrait) {
       // Manual override always wins, and isn't cached.
       if (d.painting_image) {
         d.paintingImage = d.painting_image;
+        preload(d.paintingImage);
         return;
       }
 
       const key = `${d.id}|${d.favourite_painting}`;
       if (key in cache) {
         d.paintingImage = cache[key] || null;
+        preload(d.paintingImage);
         return;
       }
 
@@ -159,6 +171,7 @@ export async function loadPaintingImages(portrait) {
         }
         cache[key] = src; // definitive result (found or genuinely not found)
         d.paintingImage = src;
+        preload(src);
       } catch {
         // Transient network error — leave unresolved so it retries next load.
       }
