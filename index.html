@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knowledge Atlas</title>
+  </head>
+  <body>
+    <div id="search">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search an artist, author or philosopher"
+        autocomplete="off"
+      />
+      <ul id="search-results"></ul>
+    </div>
+    <div id="filters">
+      <button class="filter-btn is-active" data-type="artist">Artists</button>
+      <button class="filter-btn is-active" data-type="author">Authors</button>
+      <button class="filter-btn is-active" data-type="philosopher">Philosophers</button>
+    </div>
+    <div id="app"></div>
+    <div id="controls">
+      <div id="era-label"></div>
+      <div class="slider-wrap">
+        <input type="range" id="year-slider" />
+        <div id="ticks"></div>
+      </div>
+      <div id="year-label"></div>
+      <button id="timeline-toggle" class="filter-btn">All eras</button>
+    </div>
+    <div id="detail-card" class="is-hidden">
+      <button class="card-close" aria-label="Close">×</button>
+      <div class="card-name"></div>
+      <div class="card-meta"></div>
+      <div class="card-body"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

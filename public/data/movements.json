@@ -1,0 +1,10 @@
+[
+  { "id": "renaissance", "name": "Renaissance", "start": 1300, "end": 1600 },
+  { "id": "dutch-golden-age", "name": "Dutch Golden Age", "start": 1580, "end": 1680 },
+  { "id": "baroque", "name": "Baroque", "start": 1600, "end": 1750 },
+  { "id": "romanticism", "name": "Romanticism", "start": 1780, "end": 1850 },
+  { "id": "impressionism", "name": "Impressionism", "start": 1860, "end": 1890 },
+  { "id": "post-impressionism", "name": "Post-Impressionism", "start": 1886, "end": 1910 },
+  { "id": "american-realism", "name": "American Realism", "start": 1865, "end": 1945 },
+  { "id": "modern", "name": "Modern", "start": 1910, "end": 1970 }
+]
