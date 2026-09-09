@@ -46,22 +46,33 @@ export function placePortraits(people, { svg, projection }) {
     .attr("class", (d) => `portrait type-${d.type}`)
     .attr("transform", (d) => `translate(${d.x}, ${d.y})`);
 
-  // A circular clip so a photo (loaded later) fits neatly inside the ring.
+  // Per-node scale that grows the thumbnail to a 60px circle (radius 30) when
+  // focused. focusRadius is stored on the node so the card can align to the
+  // zoomed size; the scale factor is read by CSS as var(--focus-scale).
+  const FOCUS_RADIUS = 30;
   portrait
+    .each((d) => (d.focusRadius = FOCUS_RADIUS))
+    .style("--focus-scale", (d) => FOCUS_RADIUS / d.r);
+
+  // Inner group that scales on hover — the outer group keeps the translate.
+  const scale = portrait.append("g").attr("class", "portrait-scale");
+
+  // A circular clip so a photo (loaded later) fits neatly inside.
+  scale
     .append("clipPath")
     .attr("id", (d) => `clip-${d.id}`)
     .append("circle")
     .attr("r", (d) => d.r);
 
   // Dark disc — the backdrop behind initials, hidden once a photo covers it.
-  portrait
+  scale
     .append("circle")
     .attr("class", "portrait-bg")
     .attr("r", (d) => d.r);
 
   // The photo, sized to the circle and clipped round. Starts hidden until
   // loadPortraitImages() fills in its href.
-  portrait
+  scale
     .append("image")
     .attr("class", "portrait-photo")
     .attr("x", (d) => -d.r)
@@ -73,7 +84,7 @@ export function placePortraits(people, { svg, projection }) {
     .style("display", "none");
 
   // Initials — the fallback shown until/unless a photo loads.
-  portrait
+  scale
     .append("text")
     .attr("class", "portrait-initials")
     .attr("text-anchor", "middle")

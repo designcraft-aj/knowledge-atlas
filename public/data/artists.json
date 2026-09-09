@@ -210,16 +210,5 @@
     "wikipedia": "Caspar_David_Friedrich",
     "movement": "Romanticism",
     "favourite_painting": "Wanderer above the Sea of Fog"
-  },
-  {
-    "id": "rembrandt-van-rijn",
-    "name": "Rembrandt van Rijn",
-    "type": "artist",
-    "born": 1606,
-    "died": 1669,
-    "country": "Netherlands",
-    "wikipedia": "Rembrandt",
-    "movement": "Dutch Golden Age",
-    "favourite_painting": "The Night Watch"
   }
 ]

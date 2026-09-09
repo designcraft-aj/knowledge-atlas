@@ -65,6 +65,17 @@ body {
   filter: drop-shadow(0 0 5px var(--glow)) drop-shadow(0 0 14px var(--glow));
 }
 
+/* Smoothly scale the thumbnail up to 48px when its card is open */
+.portrait-scale {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.portrait.is-focused .portrait-scale {
+  transform: scale(var(--focus-scale));
+}
+
 /* Dim veil behind the open card — the active portrait is lifted above it */
 .dim-overlay {
   fill: #0d0c0a;
@@ -464,7 +475,14 @@ body {
   font-weight: normal;
   font-size: 22px;
   letter-spacing: 1px;
-  margin-bottom: 16px;
+  margin-bottom: 4px; /* tighter gap to the byline */
+}
+
+#about-panel h3 {
+  font-weight: normal; /* byline is not bold */
+  font-size: 15px;
+  opacity: 0.7;
+  margin-bottom: 22px; /* more room before the first paragraph */
 }
 
 #about-panel p {

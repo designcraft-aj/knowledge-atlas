@@ -99,10 +99,11 @@ export function setupDetailCard(portraits) {
   function positionCard(d) {
     const pad = 16;
     const rect = card.getBoundingClientRect();
-    let left = d.x + d.r + 16;
-    let top = d.y - d.r; // align the card's top with the portrait's top
+    const fr = d.focusRadius ?? d.r; // the zoomed radius the card sits beside
+    let left = d.x + fr + 16;
+    let top = d.y - fr; // align the card's top with the zoomed portrait's top
     if (left + rect.width > window.innerWidth - pad) {
-      left = d.x - d.r - 16 - rect.width;
+      left = d.x - fr - 16 - rect.width;
     }
     left = Math.max(pad, Math.min(left, window.innerWidth - rect.width - pad));
     top = Math.max(pad, Math.min(top, window.innerHeight - rect.height - pad));
@@ -172,7 +173,9 @@ export function setupDetailCard(portraits) {
   card.addEventListener("mouseenter", cancelHide);
   card.addEventListener("mouseleave", scheduleHide);
   closeBtn.addEventListener("click", hide);
+  // A click on empty space dismisses the card — whether pinned or just
+  // hovering. Portrait clicks stopPropagation above, so they pin instead.
   document.addEventListener("click", (e) => {
-    if (pinned && !card.contains(e.target)) hide();
+    if (!card.contains(e.target)) hide();
   });
 }
