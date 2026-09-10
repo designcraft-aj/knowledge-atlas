@@ -94,5 +94,17 @@
     "movement": "Social realism",
     "books_read": ["1984"],
     "quote": ""
+  },
+  {
+    "id": "ernest-hemingway",
+    "name": "Ernest Hemingway",
+    "type": "author",
+    "born": 1899,
+    "died": 1961,
+    "country": "United States",
+    "wikipedia": "Ernest_Hemingway",
+    "movement": "Modernism",
+    "books_read": ["The Old Man and the Sea"],
+    "quote": "Besides, he thought, everything kills everything else in some way. Fishing kills me exactly as it keeps me alive."
   }
 ]

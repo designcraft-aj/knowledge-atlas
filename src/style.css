@@ -163,7 +163,7 @@ body {
   border: 1px solid #4a4636;
   background: rgba(20, 19, 14, 0.9);
   color: #e5ddd0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Cantarell", sans-serif;
   font-style: italic;
   font-size: 22px;
   line-height: 1;
@@ -204,7 +204,7 @@ body {
   border: 1px solid #4a4636;
   background: rgba(20, 19, 14, 0.9);
   color: #e5ddd0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Cantarell", sans-serif;
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
@@ -229,7 +229,7 @@ body {
 }
 
 .filter-btn {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Cantarell", sans-serif;
   font-size: 14px;
   letter-spacing: 1px;
   color: #e5ddd0;
@@ -353,7 +353,18 @@ body {
 
 .card-quote .card-value {
   font-style: italic;
-  white-space: nowrap; /* keep the quote on a single line */
+  /* narrow reading measure so long quotes wrap to ~3–4 lines instead of one
+     very wide line; short quotes stay well within it */
+  max-width: 280px;
+}
+
+/* Wrap the quote in curly quotation marks — but not the empty placeholder */
+.card-quote .card-value:not(:has(.card-empty))::before {
+  content: "\201C";
+}
+
+.card-quote .card-value:not(:has(.card-empty))::after {
+  content: "\201D";
 }
 
 /* Fetched artwork under the favourite-painting label.
