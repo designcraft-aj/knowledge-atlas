@@ -10,10 +10,12 @@ import { setupZoom } from "./zoom.js";
 import { setupCursor } from "./cursor.js";
 import { setupLoupe } from "./loupe.js";
 import { setupViews } from "./views.js";
+import { setupTheme } from "./theme.js";
 
 // Load data, draw the map, then place portraits and wire up interactions.
 async function init() {
   setupCursor();
+  setupTheme();
   setupAbout();
   const data = await loadData();
   const map = drawMap();
