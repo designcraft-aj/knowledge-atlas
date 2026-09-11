@@ -186,6 +186,11 @@ body {
   gap: 10px;
 }
 
+/* Artworks view: the year timeline doesn't apply (mode toggle row stays) */
+body.artworks-view #controls {
+  display: none;
+}
+
 /* Zoom controls — bottom-right stack */
 #zoom-controls {
   position: fixed;
@@ -349,6 +354,15 @@ body {
   display: block;
   font-size: 15px;
   line-height: 1.4;
+}
+
+/* Secondary line under a card value (e.g. a painting's year · location) */
+.card-subvalue {
+  display: block;
+  font-size: 12px;
+  opacity: 0.55;
+  margin-top: 3px;
+  letter-spacing: 0.3px;
 }
 
 .card-quote .card-value {
@@ -591,6 +605,7 @@ body {
   z-index: 2;
   white-space: nowrap; /* keep it on one line — no orphaned word */
   text-align: center;
+  font-family: "Cantarell", sans-serif;
   font-size: 11px;
   letter-spacing: 0.3px;
   color: #e5ddd0;

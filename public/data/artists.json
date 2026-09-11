@@ -8,7 +8,9 @@
     "country": "Netherlands",
     "wikipedia": "Vincent_van_Gogh",
     "movement": "Post-Impressionism",
-    "favourite_painting": "Starry Night Over the Rhône"
+    "favourite_painting": "Starry Night Over the Rhône",
+    "location": "Musée d'Orsay, Paris",
+    "painting_year": "1888"
   },
   {
     "id": "henri-matisse",
@@ -20,7 +22,9 @@
     "wikipedia": "Henri_Matisse",
     "movement": "Fauvism",
     "favourite_painting": "Woman before an Aquarium",
-    "painting_image": "https://www.artic.edu/iiif/2/d0e36029-27fc-bf4e-357a-55cfbaf7bdfd/full/843,/0/default.jpg"
+    "painting_image": "https://www.artic.edu/iiif/2/d0e36029-27fc-bf4e-357a-55cfbaf7bdfd/full/843,/0/default.jpg",
+    "location": "Art Institute of Chicago",
+    "painting_year": "1921–23"
   },
   {
     "id": "paul-cezanne",
@@ -31,7 +35,9 @@
     "country": "France",
     "wikipedia": "Paul_Cézanne",
     "movement": "Post-Impressionism",
-    "favourite_painting": "The Basket of Apples"
+    "favourite_painting": "The Basket of Apples",
+    "location": "Art Institute of Chicago",
+    "painting_year": "c. 1893"
   },
   {
     "id": "berthe-morisot",
@@ -42,7 +48,9 @@
     "country": "France",
     "wikipedia": "Berthe_Morisot",
     "movement": "Impressionism",
-    "favourite_painting": "Woman at Her Toilette"
+    "favourite_painting": "Woman at Her Toilette",
+    "location": "Art Institute of Chicago",
+    "painting_year": "1875–80"
   },
   {
     "id": "leonardo-da-vinci",
@@ -53,7 +61,9 @@
     "country": "Italy",
     "wikipedia": "Leonardo_da_Vinci",
     "movement": "Renaissance",
-    "favourite_painting": "Vitruvian Man"
+    "favourite_painting": "Vitruvian Man",
+    "location": "Gallerie dell'Accademia, Venice",
+    "painting_year": "c. 1490"
   },
   {
     "id": "raphael",
@@ -65,7 +75,9 @@
     "wikipedia": "Raphael_(painter)",
     "movement": "High Renaissance",
     "favourite_painting": "The School of Athens",
-    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg?width=640"
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg?width=640",
+    "location": "Apostolic Palace, Vatican City",
+    "painting_year": "1509–11"
   },
   {
     "id": "johannes-vermeer",
@@ -76,7 +88,9 @@
     "country": "Netherlands",
     "wikipedia": "Johannes_Vermeer",
     "movement": "Dutch Golden Age",
-    "favourite_painting": "Girl with a Pearl Earring"
+    "favourite_painting": "Girl with a Pearl Earring",
+    "location": "Mauritshuis, The Hague",
+    "painting_year": "c. 1665"
   },
   {
     "id": "gustave-caillebotte",
@@ -87,7 +101,9 @@
     "country": "France",
     "wikipedia": "Gustave_Caillebotte",
     "movement": "Impressionism",
-    "favourite_painting": "Paris Street; Rainy Day"
+    "favourite_painting": "Paris Street; Rainy Day",
+    "location": "Art Institute of Chicago",
+    "painting_year": "1877"
   },
   {
     "id": "edward-hopper",
@@ -98,7 +114,9 @@
     "country": "United States",
     "wikipedia": "Edward_Hopper",
     "movement": "American Realism",
-    "favourite_painting": "Nighthawks"
+    "favourite_painting": "Nighthawks",
+    "location": "Art Institute of Chicago",
+    "painting_year": "1942"
   },
   {
     "id": "william-turner",
@@ -109,7 +127,9 @@
     "country": "United Kingdom",
     "wikipedia": "J._M._W._Turner",
     "movement": "Romanticism",
-    "favourite_painting": "The Fighting Temeraire"
+    "favourite_painting": "The Fighting Temeraire",
+    "location": "National Gallery, London",
+    "painting_year": "1839"
   },
   {
     "id": "amrita-sher-gil",
@@ -120,7 +140,9 @@
     "country": "India",
     "wikipedia": "Amrita_Sher-Gil",
     "movement": "Modern",
-    "favourite_painting": "Three Girls"
+    "favourite_painting": "Three Girls",
+    "location": "National Gallery of Modern Art, New Delhi",
+    "painting_year": "1935"
   },
   {
     "id": "raja-ravi-varma",
@@ -154,7 +176,9 @@
     "country": "Italy",
     "wikipedia": "Michelangelo",
     "movement": "High Renaissance",
-    "favourite_painting": "The Creation of Adam"
+    "favourite_painting": "The Creation of Adam",
+    "location": "Sistine Chapel, Vatican City",
+    "painting_year": "c. 1512"
   },
   {
     "id": "mary-cassatt",
@@ -165,7 +189,9 @@
     "country": "United States",
     "wikipedia": "Mary_Cassatt",
     "movement": "Impressionism",
-    "favourite_painting": "The Child's Bath"
+    "favourite_painting": "The Child's Bath",
+    "location": "Art Institute of Chicago",
+    "painting_year": "1893"
   },
   {
     "id": "claude-monet",
@@ -176,7 +202,9 @@
     "country": "France",
     "wikipedia": "Claude_Monet",
     "movement": "Impressionism",
-    "favourite_painting": "Impression, Sunrise"
+    "favourite_painting": "Impression, Sunrise",
+    "location": "Musée Marmottan Monet, Paris",
+    "painting_year": "1872"
   },
   {
     "id": "edouard-manet",
@@ -188,7 +216,9 @@
     "wikipedia": "Édouard_Manet",
     "movement": "Impressionism",
     "favourite_painting": "Woman Reading",
-    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%89douard_Manet_-_Woman_Reading_-_1933.435_-_Art_Institute_of_Chicago.jpg?width=640"
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%89douard_Manet_-_Woman_Reading_-_1933.435_-_Art_Institute_of_Chicago.jpg?width=640",
+    "location": "Art Institute of Chicago",
+    "painting_year": "1880–82"
   },
   {
     "id": "edvard-munch",
@@ -199,7 +229,9 @@
     "country": "Norway",
     "wikipedia": "Edvard_Munch",
     "movement": "Post-Impressionism",
-    "favourite_painting": "The Scream (lithograph)"
+    "favourite_painting": "The Scream (lithograph)",
+    "location": "Munch Museum, Oslo",
+    "painting_year": "1895"
   },
   {
     "id": "caspar-david-friedrich",
@@ -210,7 +242,9 @@
     "country": "Germany",
     "wikipedia": "Caspar_David_Friedrich",
     "movement": "Romanticism",
-    "favourite_painting": "Wanderer above the Sea of Fog"
+    "favourite_painting": "Wanderer above the Sea of Fog",
+    "location": "Hamburger Kunsthalle, Hamburg",
+    "painting_year": "c. 1818"
   },
   {
     "id": "jean-honore-fragonard",
@@ -222,7 +256,9 @@
     "wikipedia": "Jean-Honoré_Fragonard",
     "movement": "Rococo",
     "favourite_painting": "The Swing",
-    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/The_Swing_(P430).jpg?width=640"
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/The_Swing_(P430).jpg?width=640",
+    "location": "Wallace Collection, London",
+    "painting_year": "1767"
   },
   {
     "id": "elisabeth-vigee-le-brun",
@@ -234,7 +270,9 @@
     "wikipedia": "Élisabeth_Vigée_Le_Brun",
     "movement": "Rococo",
     "favourite_painting": "Self-Portrait in a Straw Hat",
-    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Self-portrait_in_a_Straw_Hat_by_Elisabeth-Louise_Vig%C3%A9e-Lebrun.jpg?width=640"
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Self-portrait_in_a_Straw_Hat_by_Elisabeth-Louise_Vig%C3%A9e-Lebrun.jpg?width=640",
+    "location": "National Gallery, London",
+    "painting_year": "1782"
   },
   {
     "id": "auguste-toulmouche",
@@ -246,7 +284,8 @@
     "wikipedia": "Auguste_Toulmouche",
     "movement": "Academic art",
     "favourite_painting": "The Reluctant Bride",
-    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Toulmouche_Bride.jpg?width=640"
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Toulmouche_Bride.jpg?width=640",
+    "painting_year": "1866"
   },
   {
     "id": "vittorio-reggianini",
@@ -270,7 +309,8 @@
     "wikipedia": "Hokusai",
     "movement": "Ukiyo-e",
     "favourite_painting": "The Great Wave off Kanagawa",
-    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tsunami_by_hokusai_19th_century.jpg?width=640"
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tsunami_by_hokusai_19th_century.jpg?width=640",
+    "painting_year": "c. 1831"
   },
   {
     "id": "hiroshi-yoshida",
@@ -282,7 +322,9 @@
     "wikipedia": "Hiroshi_Yoshida",
     "movement": "Shin-hanga",
     "favourite_painting": "Ghat in Benares",
-    "painting_image": "https://www.artic.edu/iiif/2/f0183c01-56b1-9d60-1db8-f5fa164198d9/full/843,/0/default.jpg"
+    "painting_image": "https://www.artic.edu/iiif/2/f0183c01-56b1-9d60-1db8-f5fa164198d9/full/843,/0/default.jpg",
+    "location": "Art Institute of Chicago",
+    "painting_year": "1931"
   },
   {
     "id": "nicolas-lancret",
@@ -294,6 +336,36 @@
     "wikipedia": "Nicolas_Lancret",
     "movement": "Rococo",
     "favourite_painting": "The Beautiful Greek Woman",
-    "painting_image": "https://www.artic.edu/iiif/2/8c83be98-5682-ddd1-b873-09c1ebcfa8dd/full/843,/0/default.jpg"
+    "painting_image": "https://www.artic.edu/iiif/2/8c83be98-5682-ddd1-b873-09c1ebcfa8dd/full/843,/0/default.jpg",
+    "location": "Art Institute of Chicago",
+    "painting_year": "1731–36"
+  },
+  {
+    "id": "fernand-lungren",
+    "name": "Fernand Lungren",
+    "type": "artist",
+    "born": 1857,
+    "died": 1932,
+    "country": "United States",
+    "wikipedia": "Fernand_Lungren",
+    "movement": "American Impressionism",
+    "favourite_painting": "In the Café",
+    "painting_image": "https://www.artic.edu/iiif/2/7e242ca2-5c5f-bb08-ccff-7e8ef645deaf/full/843,/0/default.jpg",
+    "location": "Art Institute of Chicago",
+    "painting_year": "1882–84"
+  },
+  {
+    "id": "sandro-botticelli",
+    "name": "Sandro Botticelli",
+    "type": "artist",
+    "born": 1445,
+    "died": 1510,
+    "country": "Italy",
+    "wikipedia": "Sandro_Botticelli",
+    "movement": "Early Renaissance",
+    "favourite_painting": "The Birth of Venus",
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg?width=640",
+    "location": "Uffizi Gallery, Florence",
+    "painting_year": "c. 1485"
   }
 ]

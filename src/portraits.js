@@ -6,9 +6,9 @@ import { initials } from "./util.js";
 // the zoom logic so focus stays a constant size at any zoom level.
 export const FOCUS_RADIUS = 30;
 
-// Uniform on-screen radius (px) each portrait eases to as you zoom in (32px
-// diameter). Shared with the zoom logic and the uniform packing below.
-export const UNIFORM_R = 16;
+// Uniform on-screen radius (px) each portrait eases to as you zoom in (48px
+// diameter). Shared with the zoom logic (which runs the live ball layout).
+export const UNIFORM_R = 24;
 
 // Place portrait clusters — initials in gold circles — at each country's
 // coordinate, with same-country people clustered tightly. Returns the d3
@@ -41,25 +41,9 @@ export function placePortraits(people, { zoomLayer, projection }) {
     .force("collide", d3.forceCollide((d) => d.r + 1))
     .stop();
 
-  // Run it to settle synchronously (no animation in this step).
+  // Run it to settle synchronously (no animation in this step). The zoom logic
+  // takes over from here with a live collision sim (see zoom.js).
   for (let i = 0; i < 200; i++) sim.tick();
-
-  // A second packing at the uniform zoom-in radius: same country anchors, but
-  // every circle is UNIFORM_R. The resulting offset from the country center
-  // (uox, uoy) is what the zoom logic eases toward, so a zoomed-in cluster
-  // stays a tight, non-overlapping blob near its country instead of spreading.
-  const packNodes = nodes.map((n) => ({ cx: n.cx, cy: n.cy, x: n.x, y: n.y, ref: n }));
-  const usim = d3
-    .forceSimulation(packNodes)
-    .force("x", d3.forceX((p) => p.cx).strength(0.9))
-    .force("y", d3.forceY((p) => p.cy).strength(0.9))
-    .force("collide", d3.forceCollide(UNIFORM_R + 1))
-    .stop();
-  for (let i = 0; i < 200; i++) usim.tick();
-  packNodes.forEach((p) => {
-    p.ref.uox = p.x - p.cx;
-    p.ref.uoy = p.y - p.cy;
-  });
 
   // Draw one group per person: a gold ring plus the initials.
   const portrait = zoomLayer

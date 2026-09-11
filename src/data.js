@@ -4,11 +4,10 @@
 export async function loadData() {
   // One file per category, merged into a single people array so the map still
   // shows everyone together. Order here defines the merge order below.
-  // NOTE: philosophers are disabled for now (Lao Tzu stretched the timeline
-  // back too far); the file stays in /data and can be re-added here later.
+  // NOTE: authors and philosophers are disabled for now (the app is focused on
+  // artists/artworks); their files stay in /data and can be re-added here.
   const sources = {
     artists: "/data/artists.json",
-    authors: "/data/authors.json",
     movements: "/data/movements.json",
   };
   try {
@@ -18,10 +17,10 @@ export async function loadData() {
       if (!res.ok) throw new Error(`${entries[i][0]}.json: HTTP ${res.status}`);
     });
 
-    const [artists, authors, movements] = await Promise.all(
+    const [artists, movements] = await Promise.all(
       responses.map((res) => res.json())
     );
-    const people = [...artists, ...authors];
+    const people = [...artists];
 
     console.log("✅ Data loaded");
     console.log(`people (${people.length}):`, people);

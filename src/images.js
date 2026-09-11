@@ -16,7 +16,9 @@ export async function loadPortraitImages(portrait) {
   } catch {}
 
   // Swap in a photo for one person: show the image, hide their initials.
+  // Stash the URL on the node so the Artworks view can restore it on toggle.
   function apply(d, src) {
+    d.photo = src;
     const sel = portrait.filter((n) => n === d);
     sel.select("image.portrait-photo").attr("href", src).style("display", null);
     sel.select("text.portrait-initials").style("display", "none");

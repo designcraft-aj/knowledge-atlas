@@ -1,4 +1,5 @@
 import { formatYear } from "./util.js";
+import { view } from "./state.js";
 
 // Label a marker year in BC/AD (there is no year zero — treat it as 1 AD).
 function markerLabel(year) {
@@ -73,12 +74,21 @@ export function setupControls(people, portraits, movements) {
 
   // Which person types are currently shown. Buttons start active in the HTML.
   const activeTypes = new Set(["artist"]);
-  const filterButtons = document.querySelectorAll("#filters .filter-btn");
+  const filterButtons = document.querySelectorAll("#filters .filter-btn[data-type]");
 
   // A portrait is visible when its type is enabled and the person was alive
   // in the selected year. Also refreshes the year and era labels.
   function update() {
     const year = +slider.value;
+    // Artworks view: show every artist (the year/type filters don't apply).
+    if (view.mode === "artworks") {
+      label.textContent = "Artworks";
+      eraLabel.textContent = "";
+      const isArt = (d) => d.type === "artist";
+      portraits.classed("is-alive", isArt);
+      portraits.classed("is-hidden", (d) => !isArt(d));
+      return;
+    }
     label.textContent = allEras ? "All eras" : formatYear(year);
     eraLabel.textContent = allEras ? "" : eraFor(year, movements);
     const isVisible = (d) =>
@@ -110,4 +120,7 @@ export function setupControls(people, portraits, movements) {
   });
 
   update();
+
+  // Exposed so the view toggle can re-apply visibility when the mode changes.
+  return { update };
 }

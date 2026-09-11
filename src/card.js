@@ -1,5 +1,6 @@
 import * as d3 from "d3";
 import { escapeHtml, lifespan } from "./util.js";
+import { view } from "./state.js";
 
 // The dim meta line under the name: movement · country · lifespan.
 function metaLine(d) {
@@ -18,20 +19,31 @@ function cardField(label, value, isQuote = false, placeholder = "— add later �
     </div>`;
 }
 
+// The fetched artwork <img> markup (or "" when there's no image).
+function paintingImg(d) {
+  return d.paintingImage
+    ? `<img class="card-painting" src="${escapeHtml(d.paintingImage)}" alt="${escapeHtml(
+        d.favourite_painting || ""
+      )}" referrerpolicy="no-referrer" onerror="this.remove()">`
+    : "";
+}
+
 // The favourite-painting field, with the fetched artwork image when available.
 function cardPaintingField(d) {
   const value =
     d.favourite_painting && d.favourite_painting.trim()
       ? escapeHtml(d.favourite_painting)
       : `<span class="card-empty">— add later —</span>`;
-  const img = d.paintingImage
-    ? `<img class="card-painting" src="${escapeHtml(d.paintingImage)}" alt="${escapeHtml(
-        d.favourite_painting || ""
-      )}" referrerpolicy="no-referrer" onerror="this.remove()">`
+  const img = paintingImg(d);
+  // Year made · where the work currently lives (either shown when known).
+  const details = [d.painting_year, d.location].filter(Boolean).join("  ·  ");
+  const detailLine = details
+    ? `<span class="card-subvalue">${escapeHtml(details)}</span>`
     : "";
   return `<div class="card-field">
       <span class="card-label">Favourite painting</span>
       <span class="card-value">${value}</span>
+      ${detailLine}
       ${img}
     </div>`;
 }
@@ -55,6 +67,28 @@ function cardBody(d) {
   // Personal notes on any person — placeholder until a `notes` field is added.
   body += cardField("My notes", d.notes, false, "...");
   return body;
+}
+
+// Artworks view: the painting is the subject. Meta = painter · year.
+function artMeta(d) {
+  return [d.name, d.painting_year].filter(Boolean).join("  ·  ");
+}
+
+// Artworks view card body: the painting, then painter, movement, year, and
+// where it currently lives.
+function artBody(d) {
+  return (
+    paintingImg(d) +
+    cardField("Painter", d.name) +
+    cardField("Movement", d.movement) +
+    cardField("Year made", d.painting_year, false, "unknown") +
+    cardField("Current location", d.location, false, "unknown")
+  );
+}
+
+// True when this node should render as an artwork (Artworks view + an artist).
+function isArtCard(d) {
+  return view.mode === "artworks" && d.type === "artist";
 }
 
 // Wire hover (with a small close delay) + click-to-pin onto the portraits.
@@ -102,8 +136,8 @@ export function setupDetailCard(portraits) {
     const pad = 16;
     const rect = card.getBoundingClientRect();
     const t = d3.zoomTransform(svg); // current map zoom/pan
-    const cx = t.applyX(d.px ?? d.x); // current center (px/py track the zoom)
-    const cy = t.applyY(d.py ?? d.y);
+    const cx = t.applyX(d.x); // live portrait center (updated by the sim)
+    const cy = t.applyY(d.y);
     const fr = (d.focusRadius ?? d.r) * t.k; // on-screen radius when focused
     let left = cx + fr + 16;
     let top = cy - fr; // align the card's top with the zoomed portrait's top
@@ -118,9 +152,10 @@ export function setupDetailCard(portraits) {
 
   function show(d) {
     current = d;
-    card.querySelector(".card-name").textContent = d.name;
-    card.querySelector(".card-meta").textContent = metaLine(d);
-    card.querySelector(".card-body").innerHTML = cardBody(d);
+    const art = isArtCard(d);
+    card.querySelector(".card-name").textContent = art ? d.favourite_painting : d.name;
+    card.querySelector(".card-meta").textContent = art ? artMeta(d) : metaLine(d);
+    card.querySelector(".card-body").innerHTML = art ? artBody(d) : cardBody(d);
     card.classList.toggle("is-pinned", pinned);
     portraits.classed("is-focused", (n) => n === d); // glow the active circle
     raisePortrait(d); // lift it above the dim veil
@@ -183,4 +218,7 @@ export function setupDetailCard(portraits) {
   document.addEventListener("click", (e) => {
     if (!card.contains(e.target)) hide();
   });
+
+  // Exposed so the view toggle can dismiss an open card when switching modes.
+  return { hide };
 }
