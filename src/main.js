@@ -22,7 +22,7 @@ async function init() {
     setupDetailCard(portraits);
     loadPortraitImages(portraits);
     loadPaintingImages(portraits);
-    setupZoom(map.svg, map.zoomLayer);
+    setupZoom(map.svg, map.zoomLayer, portraits);
     setupLoupe(map.svg);
   }
 }

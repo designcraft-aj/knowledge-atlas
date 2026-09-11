@@ -102,8 +102,8 @@ export function setupDetailCard(portraits) {
     const pad = 16;
     const rect = card.getBoundingClientRect();
     const t = d3.zoomTransform(svg); // current map zoom/pan
-    const cx = t.applyX(d.x);
-    const cy = t.applyY(d.y);
+    const cx = t.applyX(d.px ?? d.x); // current center (px/py track the zoom)
+    const cy = t.applyY(d.py ?? d.y);
     const fr = (d.focusRadius ?? d.r) * t.k; // on-screen radius when focused
     let left = cx + fr + 16;
     let top = cy - fr; // align the card's top with the zoomed portrait's top

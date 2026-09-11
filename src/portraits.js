@@ -2,6 +2,14 @@ import * as d3 from "d3";
 import { COUNTRY_COORDS } from "./country-coords.js";
 import { initials } from "./util.js";
 
+// On-screen radius (px) a portrait grows to when hovered/pinned. Shared with
+// the zoom logic so focus stays a constant size at any zoom level.
+export const FOCUS_RADIUS = 30;
+
+// Uniform on-screen radius (px) each portrait eases to as you zoom in (32px
+// diameter). Shared with the zoom logic and the uniform packing below.
+export const UNIFORM_R = 16;
+
 // Place portrait clusters — initials in gold circles — at each country's
 // coordinate, with same-country people clustered tightly. Returns the d3
 // selection of portrait groups so later steps can bind behaviour to them.
@@ -36,6 +44,23 @@ export function placePortraits(people, { zoomLayer, projection }) {
   // Run it to settle synchronously (no animation in this step).
   for (let i = 0; i < 200; i++) sim.tick();
 
+  // A second packing at the uniform zoom-in radius: same country anchors, but
+  // every circle is UNIFORM_R. The resulting offset from the country center
+  // (uox, uoy) is what the zoom logic eases toward, so a zoomed-in cluster
+  // stays a tight, non-overlapping blob near its country instead of spreading.
+  const packNodes = nodes.map((n) => ({ cx: n.cx, cy: n.cy, x: n.x, y: n.y, ref: n }));
+  const usim = d3
+    .forceSimulation(packNodes)
+    .force("x", d3.forceX((p) => p.cx).strength(0.9))
+    .force("y", d3.forceY((p) => p.cy).strength(0.9))
+    .force("collide", d3.forceCollide(UNIFORM_R + 1))
+    .stop();
+  for (let i = 0; i < 200; i++) usim.tick();
+  packNodes.forEach((p) => {
+    p.ref.uox = p.x - p.cx;
+    p.ref.uoy = p.y - p.cy;
+  });
+
   // Draw one group per person: a gold ring plus the initials.
   const portrait = zoomLayer
     .append("g")
@@ -49,7 +74,7 @@ export function placePortraits(people, { zoomLayer, projection }) {
   // Per-node scale that grows the thumbnail to a 60px circle (radius 30) when
   // focused. focusRadius is stored on the node so the card can align to the
   // zoomed size; the scale factor is read by CSS as var(--focus-scale).
-  const FOCUS_RADIUS = 30;
+  // Both are recomputed by setupZoom as you zoom (see zoom.js).
   portrait
     .each((d) => (d.focusRadius = FOCUS_RADIUS))
     .style("--focus-scale", (d) => FOCUS_RADIUS / d.r);

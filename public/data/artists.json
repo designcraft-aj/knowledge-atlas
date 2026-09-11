@@ -283,5 +283,17 @@
     "movement": "Shin-hanga",
     "favourite_painting": "Ghat in Benares",
     "painting_image": "https://www.artic.edu/iiif/2/f0183c01-56b1-9d60-1db8-f5fa164198d9/full/843,/0/default.jpg"
+  },
+  {
+    "id": "nicolas-lancret",
+    "name": "Nicolas Lancret",
+    "type": "artist",
+    "born": 1690,
+    "died": 1743,
+    "country": "France",
+    "wikipedia": "Nicolas_Lancret",
+    "movement": "Rococo",
+    "favourite_painting": "The Beautiful Greek Woman",
+    "painting_image": "https://www.artic.edu/iiif/2/8c83be98-5682-ddd1-b873-09c1ebcfa8dd/full/843,/0/default.jpg"
   }
 ]
