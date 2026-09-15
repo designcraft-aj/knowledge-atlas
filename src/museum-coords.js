@@ -5,6 +5,7 @@
 // painter's country of origin.
 export const MUSEUM_COORDS = {
   "Art Institute of Chicago": [-87.6238, 41.8796],
+  "Des Moines Art Center": [-93.6836, 41.5883],
   "Musée d'Orsay, Paris": [2.3266, 48.86],
   "Gallerie dell'Accademia, Venice": [12.3283, 45.4319],
   "Apostolic Palace, Vatican City": [12.4544, 41.9046],

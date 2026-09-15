@@ -114,9 +114,10 @@
     "country": "United States",
     "wikipedia": "Edward_Hopper",
     "movement": "American Realism",
-    "favourite_painting": "Nighthawks",
-    "location": "Art Institute of Chicago",
-    "painting_year": "1942"
+    "favourite_painting": "Automat",
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Automat-edward-hopper-1927.jpg?width=640",
+    "location": "Des Moines Art Center",
+    "painting_year": "1927"
   },
   {
     "id": "william-turner",
@@ -367,5 +368,18 @@
     "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg?width=640",
     "location": "Uffizi Gallery, Florence",
     "painting_year": "c. 1485"
+  },
+  {
+    "id": "adriaen-van-utrecht",
+    "name": "Adriaen van Utrecht",
+    "type": "artist",
+    "born": 1599,
+    "died": 1652,
+    "country": "Belgium",
+    "wikipedia": "Adriaen_van_Utrecht",
+    "movement": "Baroque",
+    "favourite_painting": "Vanitas—Still Life with Bouquet and Skull",
+    "painting_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Adriaen_van_Utrecht-_Vanitas_-_Still_Life_with_Bouquet_and_Skull.JPG?width=640",
+    "painting_year": "1642"
   }
 ]
